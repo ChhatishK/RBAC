@@ -6,7 +6,6 @@ import AdminDashboard from './components/Dashboard/AdminDashboard'
 import { AuthContext } from './contexts/AuthProvider'
 
 const App = () => {
-
   const [user, setUser] = useState(null)
   const [loggedInUserData, setLoggedInUserData] = useState(null)
   const [userData, setUserData] = useContext(AuthContext);
@@ -22,12 +21,12 @@ const App = () => {
   },[])
 
   const handleLogin = (email, password) => {
-    if (email == "admin@me.com" && password == "123") {
+    if (email === "admin@me.com" && password === "123") {
       setUser('admin')
       localStorage.setItem('loggedInUser', JSON.stringify({role: 'admin', data: userData.admin}))
       setLoggedInUserData(userData.admin)
     } else if (userData) {
-      const employee = userData.employees.find((e) => email == e.email && e.password == password);
+      const employee = userData.employees.find((e) => email === e.email && e.password === password);
 
       if (employee) {
         setUser("employee")
@@ -44,7 +43,7 @@ const App = () => {
     <>
       {!user? <Login handleLogin={handleLogin} />: ""}
 
-      {user == 'admin'? <AdminDashboard setUser={setUser} data={loggedInUserData} changeUser={setUser} /> : (user == 'employee' ? <EmployeeDashboard data={loggedInUserData} changeUser={setUser} /> : null)}
+      {user === 'admin'? <AdminDashboard setUser={setUser} data={loggedInUserData} changeUser={setUser} /> : (user === 'employee' ? <EmployeeDashboard data={loggedInUserData} changeUser={setUser} /> : null)}
     </>
   )
 }

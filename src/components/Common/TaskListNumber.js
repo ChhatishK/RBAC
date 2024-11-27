@@ -1,11 +1,18 @@
 import React from 'react'
 
 const TaskListNumber = ({data}) => {
+
+    // filter task List
+    const filterTask = () => {
+        const tasks = JSON.parse(localStorage.getItem('loggedInUser'))
+
+        console.log(tasks.data.tasks)
+    }
     
   return (
-    <div className='flex w-full gap-5 mt-5 bg-[#333333] py-5 px-5 justify-between rounded'>
+    <div id="taskList" className='flex w-full overflow-x-scroll gap-5 mt-5 bg-[#333333] py-5 px-5 justify-between rounded'>
         
-        <div className='w-[45%] p-9 py-6 rounded-xl bg-sky-400'>
+        <div className='w-[45%] p-9 py-6 rounded-xl bg-sky-400' onClick={filterTask}>
             <h2 className='text-2xl font-medium'>{data.taskCount.new}</h2>
             <h3 className='text-xl font-medium'>New Task</h3>
         </div>

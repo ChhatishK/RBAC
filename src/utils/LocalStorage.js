@@ -230,7 +230,6 @@ const updateCount = (employees) => {
   });
 }
 
-
 const admin = 
   {
     "id": 1,
@@ -238,6 +237,8 @@ const admin =
     "email": "admin@example.com",
     "password": "123",
   }
+
+localStorage.setItem('employee', JSON.stringify(employees))
 export const setLocalStorage = () => {
   const employees = JSON.parse(localStorage.getItem('employee'))
   updateCount(employees)
